@@ -10,3 +10,7 @@ uv pip install langchain langchain_community langchain_openai langchain_experime
 uv pip install langgraph 
 uv pip install langchain-google-genai
 ```
+* Gradio for testing:
+```{bash}
+uv pip install gradio
+```
