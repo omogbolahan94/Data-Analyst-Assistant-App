@@ -9,6 +9,7 @@ uv pip install numpy pandas matplotlib seaborn
 uv pip install langchain langchain_community langchain_openai langchain_experimental
 uv pip install langgraph 
 uv pip install langchain-google-genai
+uv pip install langchain-groq
 ```
 * Gradio for testing:
 ```{bash}
