@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useRef } from "react";
+import FileUploadPreview from "./components/FileUploadPreview";
+import ChatBox from "./components/ChatBox";
+import Dashboard from "./components/Dashboard";
 
-function App() {
-  const [count, setCount] = useState(0)
+
+export default function App() {
+  const [chatMessages, setChatMessages] = useState([
+      { from: "assistant", text: "Hello — upload a CSV or Excel file to get started." },
+  ]);
+  const [dashboardData, setDashboardData] = useState(null);
+  const [loading, setLoading] = useState(false);
+
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen bg-white text-gray-800 p-6 font-sans">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <FileUploadPreview
+          setChatMessages={setChatMessages}
+          setLoading={setLoading}
+          setDashboardData={setDashboardData}
+        />
+        <ChatBox
+          chatMessages={chatMessages}
+          setChatMessages={setChatMessages}
+          loading={loading}
+        />
+        <Dashboard data={dashboardData} loading={loading} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
-
-export default App
