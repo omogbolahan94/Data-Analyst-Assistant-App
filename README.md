@@ -15,3 +15,12 @@ uv pip install langchain-groq
 ```{bash}
 uv pip install gradio
 ```
+* Backend Dependencies
+```{bash}
+uv pip install fastapi[all] sqlalchemy uvicorn psycopg2-binary
+```
+* Frontend Dependencies
+Create frontend folder in the root direcotry and enter into it: `mkdir frontend`, `cd frontend` 
+```{bash}
+npm create vite@5.1.0 . -- --template react
+```
