@@ -5,6 +5,7 @@ from langgraph.graph.message import add_messages
 
 class State(TypedDict):
     messages: Annotated[list, add_messages]
+    file_id: Optional[str]            
     success_criteria: str
     feedback_on_assist: Optional[str]
     success_criteria_met: bool

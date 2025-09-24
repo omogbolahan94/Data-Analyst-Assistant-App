@@ -6,6 +6,7 @@ from datetime import datetime
 
 class ChatRequest(BaseModel):
     message: str
+    file_id: Optional[str] = None
 
 
 class ChatResponse(BaseModel):

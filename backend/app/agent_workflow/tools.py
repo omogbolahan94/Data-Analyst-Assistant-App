@@ -1,4 +1,5 @@
 from langchain.agents import Tool 
+from .. import data_store.DATA_STORE as DATA_STORE
 from .state import State
 
 
@@ -12,10 +13,15 @@ def tool_data_summary(state: State) -> str:
     - Basic statistics for numeric columns
     - Top unique values for categorical columns
     """
-    df = shared_data['df']
+    file_id = state.get("file_id")
+    
+    if not file_id or file_id not in DATA_STORE:
+        return "❌ No dataset loaded yet. Please upload a CSV or Excel file first."
+
+    df = DATA_STORE[file_id]
 
     if df is None or df.empty:
-        return "❌ No dataset loaded yet. Please upload a CSV first."
+        return "❌ Dataset is empty."
     
     summary = ["summary of dataframe:"]
     summary.append(f"\n\nDataset contains {df.shape[0]} rows and {df.shape[1]} columns.\n")
